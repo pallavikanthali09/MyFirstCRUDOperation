@@ -54,8 +54,8 @@ public class DeveloperServiceImpl implements DeveloperService
 
         System.err.println("Old developer from db" + developer);
         System.err.println("Developer object with valies to be updated " + newData);
-        developer.setfName(newData.getfName());
-        developer.setlName(newData.getlName());
+        developer.setFName (newData.getFName());
+        developer.setLName(newData.getLName());
         developer.setAge(newData.getAge());
         developer.setCity(newData.getCity());
         developer.setSalary(newData.getSalary());
