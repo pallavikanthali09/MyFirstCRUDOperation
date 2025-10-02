@@ -24,5 +24,6 @@ public interface DeveloperService {
 
     List<Developer> filterDataByGenter(String gender);
 
+    List<Developer> getDeveloperByAge(int age);
 }
 

@@ -1,6 +1,7 @@
 package com.company.serviceImpl;
 
 import com.company.entity.Developer;
+import com.company.exception.DeveloperNotFoundException;
 import com.company.helper.DeveloperIdGenerator;
 import com.company.repository.DeveloperRepository;
 import com.company.service.DeveloperService;
@@ -35,10 +36,8 @@ public class DeveloperServiceImpl implements DeveloperService
 
     @Override
     public Developer getDeveloperById(int id){
-        Developer developer = developerRepository.findById(id).orElseThrow(()
-                ->
-                new NullPointerException(
-                        "Developer with id not found " +id));
+        Developer developer = developerRepository.findById(id)
+                .orElseThrow(() -> new DeveloperNotFoundException("Developer with id not found " +id));
         return developer;
     }
 
@@ -85,6 +84,12 @@ public class DeveloperServiceImpl implements DeveloperService
                         developer.getGender().equalsIgnoreCase(gender))
                 .collect(Collectors.toList());
         return filteredList;
+    }
+    @Override
+    public List<Developer> getDeveloperByAge(int age) {
+        List<Developer> developerByAge =  developerRepository.findByAge(age);
+        return developerByAge;
+
     }
 }
 

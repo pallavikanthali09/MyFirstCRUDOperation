@@ -84,6 +84,17 @@ public class DeveloperController {
         logger.info("Filter result size: {}", sortedList.size());
         return new ResponseEntity<>(sortedList, HttpStatus.OK);
     }
+
+    @DeleteMapping("/deleteInGroup")
+    public ResponseEntity<String> deleteDeveloperInGroup(@RequestParam (required = false) List<Integer> id){
+        return new ResponseEntity("deleted", HttpStatus.OK);
+    }
+
+    @GetMapping("/byAge/{age}")
+    public ResponseEntity<List<Developer>> getDeveloperbyAge(@PathVariable("age")int age){
+        List<Developer> developerList=developerService.getDeveloperByAge(age);
+        return new ResponseEntity<>(developerList, HttpStatus.OK);
+    }
     }
 
 
